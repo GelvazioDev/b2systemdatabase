@@ -1,0 +1,50 @@
+.modal-content {
+    width: 850px;
+}
+
+.linha-add-produto {
+    display: flex;
+}
+
+.linha-add-produto .campo label {
+    color: white;
+}
+
+.linha-add-produto .campo input {
+    width: 75px;
+}
+
+#produto_id {
+    width: 160px;
+}
+
+#descricao {
+    width: 230px;
+}
+
+#quantidade {
+    width: 50px;
+}
+
+#valor_unitario {
+    width: 50px;
+}
+
+#total-item {
+    width: 100px;
+}
+
+#btn-adicionar-item {
+    width: 90px;
+    margin-top: 20px;
+    padding: 3px;
+    margin-bottom: 3px;
+}
+
+#tabela-item-venda {
+    overflow: scroll;
+}
+
+#tabela-item-venda {
+    text-align: center;
+}

@@ -1,0 +1,46 @@
+.box-load {
+    position:absolute;
+    opacity: 1;
+    width: 87%;
+    height:100%;
+    background-color: #d9dee3;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-left: 15rem;
+}
+
+.pre {
+    /* https://gifer.com/en/gifs/load */
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url("https://associacaoaltosantana.vercel.app/images/loading.gif");
+    background-position: center;
+    background-size: contain; 
+    border-radius: 50%;
+    transition: all 2s ease linear;
+    color: #cce5ff;
+}
+
+.mensagem-loading {
+    color: black;
+    font-size: 2.5rem;
+}
+
+.pre-0 {
+    background-image: url("https://associacaoaltosantana.vercel.app/images/loading-0.gif");
+}
+.pre-1 {
+    background-image: url("https://associacaoaltosantana.vercel.app/images/loading-1.gif");
+}
+.pre-2 {
+    background-image: url("https://associacaoaltosantana.vercel.app/images/loading-2.gif");
+}
+.pre-3 {
+    background-image: url("https://associacaoaltosantana.vercel.app/images/loading-3.gif");    
+}
+.pre-4 {
+    background-image: url("https://associacaoaltosantana.vercel.app/images/loading-4.gif");
+}

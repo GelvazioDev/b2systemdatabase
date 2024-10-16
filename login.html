@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>B2 System</title>
+    <link rel="stylesheet" href="css/login.css">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Icone -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- SUPABASE API LIB JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="db/supabase.js"></script>
+</head>
+
+<body onload="onloadLogin()">
+    <div class="container">
+        <input type="checkbox" id="flip">
+        <div class="cover">
+            <div class="front">
+                <img src="images/logo.png" alt="">
+                <div class="text">
+                    <span class="text-1">Todo dia <br> um novo desafio!</span>
+                    <span class="text-2">Vamos crescer juntos!</span>
+                </div>
+            </div>
+        </div>
+        <div class="forms">
+            <div class="form-content">
+                <div class="login-form">
+                    <div class="title">Entrar</div>
+                    <!-- <form action="" method="post"> -->
+                    <div class="input-boxes">
+                        <div class="input-box">
+                            <i class="fas fa-envelope"></i>
+                            <input type="text" placeholder="Entre com seu email" name="login-email" id="login-email"
+                                value="admin@email.com" required>
+                        </div>
+                        <div class="input-box">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Entre com sua senha" name="login-senha" id="login-senha"
+                                value="123456" required>
+                        </div>
+                        <!-- <div class="text"><a href="esqueceusenha.html">Esqueceu a senha?</a></div> -->
+                        <div class="button input-box">
+                            <input type="submit" value="Confirmar" onclick="login()">
+                        </div>
+                        <div class="text sign-up-text">Não tem uma conta? <label for="flip">Registrar-se agora</label>
+                        </div>
+                    </div>
+                    <!-- </form> -->
+                </div>
+                <div class="signup-form">
+                    <div class="title">Registro</div>
+                    <div class="input-boxes">
+                        <div class="input-box">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Entre com seu nome" name="cadastro-nome" id="cadastro-nome"
+                                required>
+                        </div>
+                        <div class="input-box">
+                            <i class="fas fa-envelope"></i>
+                            <input type="text" placeholder="Entre com seu email" name="cadastro-email"
+                                id="cadastro-email" required>
+                        </div>
+                        <div class="input-box">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Entre com sua senha" name="cadastro-senha"
+                                id="cadastro-senha" required>
+                        </div>
+                        <div class="input-box">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Confirme a sua senha" name="cadastro-senha"
+                                id="cadastro-senha" required>
+                        </div>
+                        <div class="button input-box">
+                            <input type="submit" value="Confirmar" onclick="gravaRegistroLogin()">
+                        </div>
+                        <div class="text sign-up-text">Já tem uma conta?<label for="flip">Login</label></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/api.js" defer></script>
+<script src="js/login.js" defer></script>
+
+</html>

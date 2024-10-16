@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>B2 System</title>
+
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Icone -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- NOVO BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/loading.css">
+</head>
+
+<script src="js/login.js" defer async></script>
+
+<body onload="validaSessao('notasfiscais.html')">
+    <div class="box-load">
+        <div class="pre"></div>
+        <div class="mensagem-loading">Carregando página, aguarde....</div>
+    </div>
+
+    <div class="content">
+        <div class="sidebar">
+            <div class="logo-details">
+                <!-- <i class='bx bxl-c-plus-plus'></i> -->
+                <i class='bx bx-analyse'></i>
+                <span class="logo_name">
+                    <img src="images/logo.png" alt="B2 System">
+                </span>
+            </div>
+            <ul class="nav-links" id="menu"></ul>
+        </div>
+
+        <section class="home-section">
+            <nav>
+                <div class="sidebar-button">
+                    <i class='bx bx-menu sidebarBtn'></i>
+                    <span class="dashboard">Notas Fiscais</span>
+                </div>
+                <div class="profile-details">
+                    <img src="images/profile.png" alt="">
+                    <span class="admin_name">B2 System</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </nav>
+
+            <div class="home-content">
+                <div class="overview-boxes"
+                    style="display: flex; justify-content: center;align-items: center;width: 100%;">
+                    <div class="box" style="width: 100%;background-color: aqua;">
+                        <div class="right-side">
+                            <div class="box-topic">Em desenvolvimento....</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".sidebarBtn");
+        sidebarBtn.onclick = function () {
+            sidebar.classList.toggle("active");
+            if (sidebar.classList.contains("active")) {
+                sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+            } else {
+                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+            }
+        }
+    </script>
+
+</body>
+
+</html>

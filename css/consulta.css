@@ -1,0 +1,68 @@
+.consulta {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    gap: 10px;
+}
+
+.box-topic {
+    padding-left: 20px;
+}
+
+.filtro-consulta {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    /* background-color: blueviolet; */
+}
+
+.acoes-filtro {
+    padding: 10px;
+}
+
+.acoes-filtro select,
+.acoes-filtro label {
+    padding: 5px;
+    border: none;
+}
+
+.acoes-filtro input {
+    padding: 3px;
+}
+
+#operadorConsulta,
+#campoValor1,
+#campoValor2 {
+    padding: 5px;
+}
+
+select,
+input {
+    border-radius: 7px;
+    border: 1px solid #0a2558;
+    /* box-shadow */
+    /* Deslocamento horizontal (x)
+       Deslocamento vertical (y)
+       Desfoque (blur)
+       Espalhamento (spread)
+       Cor
+    */
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); */
+    transition: all 0.4s ease-in-out;
+}
+
+select:hover,
+input:hover {
+    box-shadow: 2px 2px 5px #0a2558;
+}
+
+table {
+    background-color: aliceblue;
+}
+
+.right-side {
+    width: 100%;
+}

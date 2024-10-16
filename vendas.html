@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>B2 System</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/consulta.css">
+
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Icone -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- NOVO BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- NOVO BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="js/login.js" defer async></script>
+    <link rel="stylesheet" href="css/modal-cadastro.css">
+    <link rel="stylesheet" href="css/vendas.css">
+    <link rel="stylesheet" href="css/modal-reset.css">
+</head>
+
+<body onload="validaSessao('vendas.html'), executaConsulta()">
+    <div class="box-load">
+        <div class="pre"></div>
+        <div class="mensagem-loading">Carregando página, aguarde....</div>
+    </div>
+
+    <div class="content">
+        <div class="sidebar">
+            <div class="logo-details">
+                <!-- <i class='bx bxl-c-plus-plus'></i> -->
+                <i class='bx bx-analyse'></i>
+                <span class="logo_name">
+                    <img src="images/logo.png" alt="B2 System">
+                </span>
+            </div>
+            <ul class="nav-links" id="menu"></ul>
+        </div>
+
+        <section class="home-section">
+            <nav>
+                <div class="sidebar-button">
+                    <i class='bx bx-menu sidebarBtn'></i>
+                    <span class="dashboard">Vendas</span>
+                </div>
+                <div class="profile-details">
+                    <img src="images/profile.png" alt="">
+                    <span class="admin_name">B2 System</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </nav>
+
+            <div class="home-content">
+                <div class="overview-boxes"
+                    style="display: flex; justify-content: center;align-items: center;width: 100%;">
+                    <div class="box" style="width: 100%;background-color: aqua;">
+                        <div class="right-side">
+                            <div class="box-topic">Vendas</div>
+                            <div class=consulta>
+                                <div class="filtro-consulta">
+                                    <label for="filtroConsulta">Filtro:</label>
+                                    <div class="acoes-filtro">
+                                        <select name="filtroConsulta" id="filtroConsulta"
+                                            onChange="atualizaTipoConsulta()">
+                                            <option value="codigoConsulta" id="codigoConsulta" data-tipo="numerico"
+                                                selected>
+                                                Código
+                                            </option>
+                                            <option value="descricaoConsulta" id="descricaoConsulta" data-tipo="texto">
+                                                Descrição
+                                            </option>
+                                            <option value="dataCadastroConsulta" id="dataCadastroConsulta"
+                                                data-tipo="data">
+                                                Preço
+                                            </option>
+                                            <option value="dataCadastroConsulta" id="dataCadastroConsulta"
+                                                data-tipo="data">
+                                                Estoque
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <select name="operadorConsulta" id="operadorConsulta"
+                                        onchange="atualizaCampoSegundoValor()">
+                                    </select>
+
+                                    <input type="text" id="campoValor1" value="1">
+                                    <input type="text" id="campoValor2" style="display: none;">
+
+                                    <button class="btn btn-primary" onclick="executaConsulta()">Consultar</button>
+                                </div>
+
+                                <div class="acoes-consulta">
+                                    <button class="btn btn-success" onclick="incluirCliente()">Incluir</button>
+                                </div>
+
+                                <table class="table table-striped table-hover table-bordered caption-top">
+                                    <caption class="table-info text-center bg-primary"
+                                        style="color:aliceblue;font-size: 22px;">Clientes</caption>
+                                    <thead class="table-primary text-center">
+                                        <th>Código</th>
+                                        <th>Nome</th>
+                                        <th>CPF</th>
+                                        <th>Cidade</th>
+                                        <th>Estado</th>
+                                        <th colspan="5" class="text-center">Ações</th>
+                                    </thead>
+                                    <tbody id="tabela-produtos">
+                                        <!-- SERA PREENCHIDO VIA JAVASCRIPT -->
+                                    </tbody>
+                                </table>
+
+                                <!-- MODAL INICIO -->
+                                <dialog class="modal" style="display: block;">
+                                    <!-- Modal content -->
+                                    <div class="modal-content">
+                                        <section class="modal-header">
+                                            <h1 class="modal-title text-center">Venda</h1>
+                                            <button onclick="fecharModal()" class="btn btn-danger">
+                                                <span class="btn-close-modal">&times;</span>
+                                            </button>
+                                        </section>
+
+                                        <hr>
+
+                                        <!-- <form action=""> -->
+                                        <div class="form">
+                                            <input type="hidden" id="ACAO" value="ACAO_INCLUSAO">
+                                            <div class="campo">
+                                                <label for="codigo">Código:</label>
+                                                <input type="text" id="codigo" disabled size="10">
+                                            </div>
+                                            <div class="campo">
+                                                <label for="cliente_id">Cliente:</label>
+                                                <select name="cliente_id" id="cliente_id">
+                                                    <option value="1">Adriano</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="campo">
+                                                <label for="vendedor_id">Vendedor:</label>
+                                                <select name="vendedor_id" id="vendedor_id">
+                                                    <option value="1">João da Silva</option>
+                                                </select>
+                                            </div>
+                                            <div class="campo">
+                                                <label for="condpagto_id">Cond.Pagt:</label>
+                                                <select name="condpagto_id" id="condpagto_id">
+                                                    <option value="1">A Vista</option>
+                                                </select>
+                                            </div>
+                                            <div class="linha-add-produto">
+                                                <div class="campo">
+                                                    <label for="produto_id">Produto:</label>
+                                                    <input type="text" id="produto_id" value="150">
+                                                </div>
+                                                <div class="campo">
+                                                    <label for="descricao">Descrição:</label>
+                                                    <input type="text" id="descricao" value="150">
+                                                </div>
+                                                <div class="campo">
+                                                    <label for="quantidade">Qtde:</label>
+                                                    <input type="text" id="quantidade" value="10">
+                                                </div>
+                                                <div class="campo">
+                                                    <label for="unit">Unit.:</label>
+                                                    <input type="text" id="unit" value="15,00">
+                                                </div>
+                                                <div class="campo">
+                                                    <label for="total-item">Total:</label>
+                                                    <input type="text" id="total-item" value="150,00">
+                                                </div>
+                                                <div class="campo" id="div-btn-adicionar-item">
+                                                    <button id="btn-adicionar-item" class="btn btn-success"
+                                                        onclick="confirmarModal()">Adicionar</button>
+                                                </div>
+                                            </div>
+                                            <div class="item-venda">
+                                                <table
+                                                    class="table table-striped table-hover table-bordered caption-top">
+                                                    <thead class="table-primary text-center">
+                                                        <th>Código</th>
+                                                        <th>Descrição</th>
+                                                        <th>Qtde</th>
+                                                        <th>Unit.</th>
+                                                        <th>Total</th>
+                                                    </thead>
+                                                    <tbody id="tabela-item-venda">
+                                                        <!-- SERA PREENCHIDO VIA JAVASCRIPT -->
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td class="text-lg-start">Computador</td>
+                                                            <td>10</td>
+                                                            <td>5689,45</td>
+                                                            <td>56.894,50</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2</td>
+                                                            <td class="text-lg-start">Monitor</td>
+                                                            <td>10</td>
+                                                            <td>5689,45</td>
+                                                            <td>56.894,50</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3</td>
+                                                            <td class="text-lg-start">Mouse</td>
+                                                            <td>10</td>
+                                                            <td>5689,45</td>
+                                                            <td>56.894,50</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>4</td>
+                                                            <td class="text-lg-start">Teclado</td>
+                                                            <td>10</td>
+                                                            <td>5689,45</td>
+                                                            <td>56.894,50</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <hr>
+
+                                        <div class="modal-footer">
+                                            <button class="btn btn-success"
+                                                onclick="confirmarModal()">Confirmar</button>
+                                            <button class="btn btn-danger" onclick="fecharModal()">Fechar</button>
+                                        </div>
+                                    </div>
+                                </dialog>
+                                <!-- MODAL FIM -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script src="js/api.js"></script>
+
+    <script src="js/venda.js"></script>
+
+    <script src="js/consulta.js"></script>
+    <script src="js/global.js"></script>
+
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".sidebarBtn");
+        sidebarBtn.onclick = function () {
+            sidebar.classList.toggle("active");
+            if (sidebar.classList.contains("active")) {
+                sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+            } else {
+                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+            }
+        }
+    </script>
+</body>
+
+</html>
