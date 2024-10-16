@@ -47,8 +47,7 @@ function redirecionaPagina(pagina) {
 
 function atualizaMenu() {
     var url_atual = window.location.href;
-    // let baseUrl = "https://b2system.vercel.app/";
-    let baseUrl = "https://b2systemsenac.vercel.app/";
+    let baseUrl = "https://b2systemdatabase.vercel.app/";
     if (url_atual.includes("http://127.0.0.1:5500/")) {
         baseUrl = "http://127.0.0.1:5500/";
     }
